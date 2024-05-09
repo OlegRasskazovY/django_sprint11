@@ -43,11 +43,13 @@ posts = [
     },
 ]
 
+
 def index(request):
     template = 'blog/index.html'
     inverted_posts = posts[::-1]
     context = {'posts': inverted_posts}
     return render(request, template, context)
+
 
 def post_detail(request, id):
     template = 'blog/detail.html'
@@ -55,6 +57,7 @@ def post_detail(request, id):
     if not post:
         post = {'error': 'Публикация не найдена'}
     return render(request, template, {'post': post})
+
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
