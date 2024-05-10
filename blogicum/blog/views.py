@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 
 posts = [
@@ -54,8 +55,8 @@ def index(request):
 def post_detail(request, id):
     template = 'blog/detail.html'
     post = next((post for post in posts if post['id'] == id), None)
-    if not post:
-        post = {'error': 'Публикация не найдена'}
+    if post is None:
+        raise Http404("Poll does not exist")
     return render(request, template, {'post': post})
 
 
