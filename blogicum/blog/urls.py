@@ -1,7 +1,5 @@
-# Импорты из стандартной библиотеки
 from django.urls import path
 
-# Импорты проекта
 from . import views
 
 app_name = 'blog'
